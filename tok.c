@@ -1,10 +1,18 @@
 #include "shell.h"
-char **token(char* line)
+/**
+ * token - Tokenizes a string into an array of strings.
+ *
+ * @line: The string to tokenize.
+ *
+ * Return: A pointer to an array of pointers to the
+ * tokenized strings, or NULL if memory allocation fails.
+*/
+char **token(char *line)
 {
 	char *token = NULL, *tmp = NULL;
 	char **command = NULL;
 	int cpt = 0, i = 0;
-	
+
 	tmp = _strdup(line);
 	token = strtok(tmp, DELIM);
 	while (token)
@@ -17,11 +25,11 @@ char **token(char* line)
 	command = malloc(sizeof(char *) * (cpt + 1));
 	if (!command)
 	{
-		free(line);	
-		return NULL;
+		free(line);
+		return (NULL);
 	}
 	token = strtok(line, DELIM);
-	while(token)
+	while (token)
 	{
 		command[i] = _strdup(token);
 		token = strtok(NULL, DELIM);
