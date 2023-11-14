@@ -33,7 +33,7 @@ int _exe(char **cmd, char **argv, int i)
 	else
 	{
 		waitpid(child, &status, 0);
-		free(full_path), full_path = NULL
+		free(full_path), full_path = NULL;
 		freearr2(cmd);
 	}
 	return (WEXITSTATUS(status));

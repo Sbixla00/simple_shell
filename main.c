@@ -25,7 +25,12 @@ int main(int ac, char **argv)
 		cmd = token(line);
 		if (!cmd)
 		continue;
-
+		
+		if(_check(cmd) == 1)
+		{
+			built_check(cmd, argv, &status, i);
+		}
+		else
 		status = _exe(cmd, argv, i);
 	}
 }

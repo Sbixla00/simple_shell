@@ -44,7 +44,7 @@ void _env(char **cmd, int *status)
 		write(STDOUT_FILENO, "\n", 1);
 	}
 	freearr2(cmd);
-	*status = 0; i
+	*status = 0;
 }
 /**
  * _exitcmd - Terminates the shell program with a specified exit status
@@ -56,7 +56,7 @@ void _env(char **cmd, int *status)
  *
  * Return: Always returns 1 to indicate the `exit` command was executed
 */
-void _exitcmd(char **cmd, char *argv, int *status, int i)
+void _exitcmd(char **cmd, char **argv, int *status, int i)
 {
 	int new_value = *status;
 	char *index, msg[] = ": exit: Illegal number: ";
