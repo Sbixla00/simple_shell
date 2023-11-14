@@ -44,7 +44,7 @@ void _env(char **cmd, int *status)
 		write(STDOUT_FILENO, "\n", 1);
 	}
 	freearr2(cmd);
-	*status = 0;
+	*status = 0; i
 }
 /**
  * _exitcmd - Terminates the shell program with a specified exit status
@@ -59,7 +59,7 @@ void _env(char **cmd, int *status)
 void _exitcmd(char **cmd, char *argv, int *status, int i)
 {
 	int new_value = *status;
-	char *index;
+	char *index, msg[] = ": exit: Illegal number: ";
 
 	if (cmd[1])
 	{
@@ -72,7 +72,7 @@ void _exitcmd(char **cmd, char *argv, int *status, int i)
 			write(STDERR_FILENO, argv[0], _strlen(argv[0]) + 1);
 			write(STDERR_FILENO, ": ", 2);
 			write(STDERR_FILENO, index, _strlen(index) + 1);
-			write(STDERR_FILENO, ": exit: Illegal number: ", _strlen(": exit: Illegal number: ") + 1);
+			write(STDERR_FILENO, msg, _strlen(msg) + 1);
 			write(STDERR_FILENO, cmd[1], _strlen(cmd[1]) + 1);
 			write(STDERR_FILENO, "\n", 1);
 			free(index), index = NULL;
