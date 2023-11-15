@@ -12,9 +12,8 @@
 */
 void built_check(char **cmd, char **argv, int *status, int i)
 {
-	char err[] = "unsetenv: variable not found";
 	char err1[] = "setenv: insufficient memory";
-
+	char err[] = "unsetenv: variable not found";
 	if (_strcmp("exit", cmd[0]) == 0)
 	_exitcmd(cmd, argv, status, i);
 	else if (_strcmp("env", cmd[0]) == 0)
@@ -23,13 +22,15 @@ void built_check(char **cmd, char **argv, int *status, int i)
 	afdal_cd(cmd, argv[0], status, i);
 	else if (_strcmp("setenv", cmd[0]) == 0)
 	{
-		if (setenv(cmd[0], cmd[1], 1) != 0)
+		if (setenv(cmd[1], cmd[2], 1))
 		write(STDERR_FILENO, err1, _strlen(err1));
+		freearr2(cmd);
 	}
-	else if (_strcmp("unsetenv", cmd[0]) == 0)
+	else if (_strcmp("unsetenv", cmd[1]) == 0)
 	{
-		 if (unsetenv(cmd[0]) != 0)
-		write(STDERR_FILENO, err, _strlen(err));
+		if (unsetenv(cmd[0]))
+		write(STDERR_FILENO, err, _strlen(err));	
+	freearr2(cmd);
 	}
 }
 /**
