@@ -17,9 +17,9 @@ char *get_line(void)
 	if (isatty(STDIN_FILENO))
 	write(STDOUT_FILENO, "$ ", 2);
 	c = getline(&line, &len, stdin);
-	if (line == NULL || c == -1)
+	if (c == -1)
 	{
-		free(line);
+		free(line), line = NULL;
 		return (NULL);
 	}
 	return (line);

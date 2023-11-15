@@ -1,39 +1,55 @@
 #include "shell.h"
 
-char **pretok(char *line) {
+char **pretok(char *line)
+{
     char *tmp, **cmd, *dlm[] = {"&&", "||", ";"};
     int i = 0, j = 0, k = 0;
 
     cmd = malloc(sizeof(char *) * SIZE);
     char **cmdtmp = malloc(sizeof(char *) * SIZE);
 
-    tmp = strtok(line, " ");
-    while (tmp != NULL) {
-        cmdtmp[i++] = strdup(tmp);
-        tmp = strtok(NULL, " ");
-    }
+	tmp = strtok(line, " ");
+	while (tmp != NULL)
+	{
+	cmdtmp[i++] = strdup(tmp);
+	tmp = strtok(NULL, " ");
+	}
     
     i = 0;
     strcpy(cmd[k++], cmdtmp[i++]);
 
-    while (cmdtmp[i] != NULL) {
+    while (cmdtmp[i] != NULL)
+    {
         j = 0;
-        while (dlm[j] != NULL) {
-            if (strcmp(dlm[j], cmdtmp[i]) == 0) {
-                strcpy(cmd[k++], dlm[j]);
-                break;
+        while (dlm[j] != NULL)
+	{
+            if (strcmp(dlm[j], cmdtmp[i]) == 0)
+	    {
+                _strcpy(cmd[k], dlm[j]);
+                k++;
+		break;
             }
             j++;
         }
 
-        if (cmdtmp[i + 1] != NULL) {
-            strcpy(cmd[k++], cmdtmp[++i]);
+        if (cmdtmp[i + 1] != NULL)
+	{
+            _strcpy(cmd[k++], cmdtmp[++i]);
         }
         i++;
     }
 
     freearr2(cmdtmp);
-
     return cmd;
 }
+void exev2()
+{
+	int n = 0;
+	
+	if(_strcmp("&&", cmd[x]) == 0)
+	_first();
+	else if(_strcmp("||", cmd[x]) == 0)
+	_second();
+	else if(_strcmp(";", cmd[x]) == 0)
 
+}

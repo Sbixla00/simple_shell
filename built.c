@@ -23,14 +23,22 @@ void built_check(char **cmd, char **argv, int *status, int i)
 	else if (_strcmp("setenv", cmd[0]) == 0)
 	{
 		if (setenv(cmd[1], cmd[2], 1))
+		{
 		write(STDERR_FILENO, err1, _strlen(err1));
+		*status = 2;
+		}
 		freearr2(cmd);
+		*status = 0;
 	}
 	else if (_strcmp("unsetenv", cmd[1]) == 0)
 	{
 		if (unsetenv(cmd[0]))
-		write(STDERR_FILENO, err, _strlen(err));	
-	freearr2(cmd);
+		{
+		write(STDERR_FILENO, err, _strlen(err));
+		*status = 2;
+		}
+		freearr2(cmd);
+		*status = 0;
 	}
 }
 /**
