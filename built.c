@@ -12,8 +12,8 @@
 */
 void built_check(char **cmd, char **argv, int *status, int i)
 {
-	char err1[] = "setenv: insufficient memory";
-	char err[] = "unsetenv: variable not found";
+	char err1[] = "setenv: insufficient memory\n";
+	char err[] = "unsetenv: variable not found\n";
 	if (_strcmp("exit", cmd[0]) == 0)
 	_exitcmd(cmd, argv, status, i);
 	else if (_strcmp("env", cmd[0]) == 0)
