@@ -10,7 +10,7 @@
 */
 int _check(char **cmd)
 {
-	char *built_tst[] = {"env", "cd", "setenv", "exit", NULL};
+	char *built_tst[] = {"env", "cd", "unsetenv", "setenv", "exit", NULL};
 	int i;
 
 	for (i = 0; built_tst[i]; i++)
