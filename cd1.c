@@ -28,7 +28,7 @@ void afdal_cd(char **cmd, char *argv, int *status, int i)
 		chdir(tmp);
 		setenv("OLDPWD", tmp1, 1), setenv("PWD", tmp, 1);
 		write(STDOUT_FILENO, tmp, _strlen(tmp));
-		*status = 0;
+		write(STDOUT_FILENO, "\n", 1), *status = 0;
 	}
 	else
 	{

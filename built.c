@@ -24,12 +24,12 @@ void built_check(char **cmd, char **argv, int *status, int i)
 	else if (_strcmp("setenv", cmd[0]) == 0)
 	{
 		setenv(cmd[1], cmd[2], 1);
-		write(SRDERR_FILENO, err1, _srtlen(err1));
+		write(STDERR_FILENO, err1, _strlen(err1));
 	}
 	else if (_strcmp("unsetenv", cmd[0]) == 0)
 	{
 		unsetenv(cmd[1]);
-		write(SRDERR_FILENO, err, _srtlen(err));
+		write(STDERR_FILENO, err, _strlen(err));
 	}
 }
 /**
