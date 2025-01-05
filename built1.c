@@ -12,7 +12,8 @@ int _check(char **cmd)
 {
 	char *built_tst[] = {"env", "cd", "unsetenv", "setenv", "exit", NULL};
 	int i;
-
+	if(cmd && !*cmd)
+		return 0;
 	for (i = 0; built_tst[i]; i++)
 	{
 		if (_strcmp(cmd[0], built_tst[i]) == 0)

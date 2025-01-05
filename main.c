@@ -15,7 +15,7 @@ int main(int ac, char **argv)
 	while (1)
 	{
 		line = get_line();
-		if (line == NULL)
+		if (!line)
 		{
 			if (isatty(STDIN_FILENO))
 			write(STDOUT_FILENO, "\n", 1);
@@ -23,7 +23,7 @@ int main(int ac, char **argv)
 		}
 		i++;
 		cmd = token(line);
-		if (!cmd)
+		if (!*cmd)
 		continue;
 		if (_check(cmd) == 1)
 		{

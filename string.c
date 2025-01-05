@@ -39,7 +39,7 @@ int _strcmp(char *s1, char *s2)
 	int len2 = _strlen(s2);
 	int i = 0;
 
-	if (len2 != len1)
+	if (len2 != len1 || !s1)
 	return (1);
 	while (s1[i] == s2[i])
 	{
@@ -92,7 +92,8 @@ char *_strcat1(char *dest, char *src)
 int _strlen(const char *str)
 {
 	int i = 0;
-
+	if(!str)
+		return 0;
 	while (str[i])
 	{
 		i++;
